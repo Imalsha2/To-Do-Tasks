@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root{
+  --bg: #3a1f6b; 
+  --card: rgba(255, 255, 255, 0.55);
+  --muted: rgba(50, 8, 8, 0.78);
+  --accent: #ff5fa2; 
+  --accent-600: #0f0124; 
+  --danger: #ef4444;
+  --radius: 10px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(135deg, #392273 0%, #c56bf1 45%, var(--bg) 100%);
+  color: #080808;
+  -webkit-font-smoothing:antialiased;
+
+  /* center the main card vertically & horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 0;
+}
+
+/* decorative color */
+body::before,
+body::after{
+  content: "";
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(60px) saturate(110%);
+}
+body::before{
+  left: -8%;
+  top: 6%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 30% 30%, rgba(183,107,255,0.20), rgba(183,107,255,0.08) 40%, transparent 65%);
+}
+body::after{
+  right: -6%;
+  bottom: 4%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle at 70% 70%, rgba(246,92,139,0.18), rgba(246,92,139,0.06) 30%, transparent 60%);
+}
+
+.app-shell{
+  max-width:1100px;
+  margin: 0 auto;
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 12px 30px rgba(2,6,23,0.12);
+  overflow:hidden;
+  display:flex;
+  gap:36px;
+  position:relative; 
+  z-index: 1;
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+  padding:48px;
+  min-height:520px;
+}
+
+.left, .right{
+  padding:10px;
+}
+.left{
+  width:420px;
+  border-right: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background-image: linear-gradient(180deg, rgba(183,107,255,0.04), rgba(107,46,217,0.02));
+  border-radius:12px;
+  box-shadow:0 12px 30px rgba(2,6,23,0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  padding: 48px; 
+}
+
+/* Center header and form fields inside the left/Create card */
+.left .header{flex-direction:column;align-items:center;text-align:center;margin-bottom:22px}
+.left .header h3{font-size:20px}
+.left .header p{color:var(--muted);font-size:13px;margin-top:6px}
+.left .form-field{width:90%;margin:0 auto;margin-bottom:24px}
+.left input[type="text"], .left textarea{width:100%;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid #eef2f7;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+  font-size:14px;
+  color:#0f172a;
+  outline:none;
+  transition:box-shadow .12s ease, border-color .12s ease, transform .08s ease;
+}
+.left textarea{min-height:120px;resize:vertical}
+.left input[type="text"]:focus, .left textarea:focus{
+  border-color:#e6e9f8;
+  box-shadow:0 14px 40px rgba(109,40,217,0.06);
+  transform:translateY(-1px);
+}
+.left input::placeholder, .left textarea::placeholder{color:#94a3b8}
+
+/* Make left/right cards have similar inner spacing visually */
+.right{padding:48px}
+.right{
+  flex:1;min-width:320px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px 32px;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.12);
+}
+.btn.small.icon{display:inline-flex;align-items:center;gap:6px}
+
+.right{
+  flex:1;min-width:320px;background:transparent;padding:28px 32px;
+}
+
+.tasks-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px}
+.tasks-count{color:var(--accent-600);font-size:12px;font-weight:600}
+ .tasks-grid{display:flex;flex-direction:column;gap:12px;max-height:360px;overflow:auto;padding-right:8px;-webkit-overflow-scrolling:touch}
+ 
+ /* custom scrollbar for recent-tasks area */
+ .tasks-grid::-webkit-scrollbar{width:10px;height:10px}
+ .tasks-grid::-webkit-scrollbar-thumb{background:rgba(0, 0, 0, 0.726);border-radius:20px}
+ .tasks-grid::-webkit-scrollbar-track{background:transparent}
+
+.task-card{
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  padding:20px;border-radius:12px;border:1px solid #eef2f7;display:flex;align-items:flex-start;gap:16px;box-shadow:0 12px 30px rgba(2,6,23,0.12);
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, background-color .12s ease;
+}
+.task-card{position:relative}
+.task-meta{flex:1}
+.task-title{font-weight:600;margin-bottom:6px}
+.task-desc{color:var(--muted);font-size:13px;margin-bottom:8px}
+.task-time{font-size:12px;color:#9ca3af}
+
+.task-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.task-badge.new{background:linear-gradient(90deg,var(--accent),var(--accent-600));color:white;box-shadow:0 6px 18px rgba(109,40,217,0.08)}
+.task-badge.done{background:linear-gradient(90deg,#10b981,#059669);color:white;box-shadow:0 6px 18px rgba(16,185,129,0.08)}
+
+.task-card .task-meta{padding-right:8px}
+
+.empty{background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px dashed rgba(99,102,241,0.06)}
+
+.app-shell::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:80%;height:6px;border-radius:999px;background:linear-gradient(90deg,rgba(183,107,255,0.06),rgba(107,46,217,0.02));pointer-events:none}
+
+/* responsive tweak for buttons */
+@media (max-width:880px){
+  .btn{width:100%;display:block}
+  .task-actions{flex-direction:row;gap:8px}
+}
+
+.task-actions{display:flex;flex-direction:column;gap:8px}
+.btn, .btn.small{transition:transform .14s ease, box-shadow .14s ease, background .14s ease, color .14s ease}
+.btn.small{padding:6px 10px;border-radius:8px;font-size:13px}
+
+/* Add / Mark-done button animations */
+.left .btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(121,52,199,0.18);
+}
+.left .btn:active{transform:translateY(-1px);box-shadow:0 8px 20px rgba(121,52,199,0.08)}
+
+.task-actions .btn.small{
+  background: var(--card);
+  color: black;
+  border:1px solid rgb(71, 49, 105);
+  padding:6px 10px;
+  border-radius:8px;
+}
+.task-actions .btn.small:hover{
+  transform:translateY(-3px);
+  background:linear-gradient(90deg,#760b0b,#c351515a);
+  color:white;
+  box-shadow:0 10px 28px rgba(6,95,70,0.12);
+}
+.task-actions .btn.small:active{transform:translateY(0);box-shadow:none}
+
+.task-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,0.06);border-color:#e6e9f8}
+
+.task-card.completed{opacity:0.72;text-decoration:line-through;background:linear-gradient(90deg,#f3f4f6,#ffffff);border-style:solid;border-color:#e6eef8}
+
+.task-badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:var(--accent);color:#fff}
+
+.task-card .task-actions{align-items:flex-end}
+
+.task-card .task-title{display:flex;align-items:center;gap:10px}
+.task-card .task-title .title-text{flex:1}
+
+.empty{
+  color:var(--muted);padding:24px;text-align:center;border-radius:8px;background:#fbfdff;border:1px dashed #eef2f7
+}
+
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;}
+.header h3{margin:0;font-size:18px}
+.header p{margin:0;color:var(--muted);font-size:13px}
+
+.form-field{margin-bottom:16px}
+
+/* Micro-spacing and primary button styles for the Create card */
+.left .btn{
+  margin-top:14px;
+  padding:10px 14px;
+  border-radius:10px;
+  border: none;
+  font-weight:600;
+  cursor:pointer;
+  color: white;
+  background: linear-gradient(90deg, var(--accent), var(--accent-600));
+  box-shadow: 0 10px 26px rgba(121,52,199,0.12);
+}
+.left .btn.secondary{
+  background: var(--card);
+  color: black;
+  border:1px solid rgb(159, 107, 237);
+  padding:10px 14px;
+  border-radius:10px;
+  transition: transform .18s cubic-bezier(.2,.9,.2,1), background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.left .btn.secondary:hover{
+  transform: translateY(-3px);
+  color: black;
+  background: linear-gradient(90deg, rgba(15,1,36,0.06), rgba(255,95,162,0.04));
+  box-shadow: 0 12px 30px rgba(109,40,217,0.08);
+}
+.left .btn.secondary:active{
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+@media (max-width:880px){
+  body{align-items:flex-start;padding-top:18px}
+  .app-shell{flex-direction:column;margin:18px}
+  .left{width:100%;border-right:none;border-bottom:1px solid #eef2f7}
+}

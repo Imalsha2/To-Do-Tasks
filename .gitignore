@@ -1,0 +1,40 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+.env.local
+.env.*.local
+
+# Build output
+/frontend/build
+/backend/dist
+/frontend/node_modules
+/backend/node_modules
+
+# Logs
+logs
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Database / data files
+/data/
+*.sqlite
+*.sqlite3
+
+# Test output
+coverage/
+coverage-*
+
+# Yarn / pnpm
+.pnp.*
+.yarn/*
+
+# ignore TS build output
+dist/
+

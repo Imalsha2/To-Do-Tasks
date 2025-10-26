@@ -1,4 +1,4 @@
-# 📝✨ Task Manager App
+# 📝✨ To-Do Task web App
 
 A **small full-stack example app** (React frontend + TypeScript/Express backend) for managing simple tasks. This repository includes a **Docker setup** and clear instructions for running the project locally for development or production-like testing. 🚀💻
 
